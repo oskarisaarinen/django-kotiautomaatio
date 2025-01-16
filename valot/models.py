@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 class Huone(models.Model):
     nimi = models.CharField(max_length=100)
-    käyttäjä = models.ForeignKey(User, on_delete=models.CASCADE, related_name="huoneet")
+    
 
     def __str__(self):
         return self.nimi
