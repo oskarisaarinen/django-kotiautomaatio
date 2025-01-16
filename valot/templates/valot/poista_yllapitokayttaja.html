@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Vahvista Poisto</title>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Vahvista Poisto</h1>
+        
+        <p>Oletko varma, että haluat poistaa ylläpitäjän {{ user_to_delete.username }}?</p>
+        
+        <p>Syötä nykyinen salasanasi vahvistaaksesi tämän toimenpiteen:</p>
+        
+        <!-- Salasana Hyväksyntä -->
+        <form method="POST">
+            {% csrf_token %}
+            
+            <div class="mb-3">
+                <label for="{{ form.password.id_for_label }}" class="form-label">Salasana</label>
+                {{ form.password }}
+            </div>
+
+            <button type="submit" class="btn btn-danger">Poista Ylläpitäjä</button>
+        </form>
+
+        <a href="{% url 'yllapito' %}" class="btn btn-secondary mt-3">Peruuta</a>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
